@@ -29,5 +29,11 @@ router.get('/random/:id', loginCheck(), (req, res, next) => {
     .then((art) => res.send(art))
     .catch((error) => console.log(error));
 });
+router.get('/art/:id', loginCheck(), (req, res, next) => {
+  artApi
+    .getArt(req.params.id)
+    .then((art) => res.send(art))
+    .catch((error) => console.log(error));
+});
 
 module.exports = router;

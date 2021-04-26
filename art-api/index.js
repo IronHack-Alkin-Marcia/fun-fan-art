@@ -12,13 +12,29 @@ require('dotenv').config();
 const axios = require('axios');
 const qs = require('qs');
 
-class ArtApi {
+class BaseArtApi {
   constructor() {
+    this.baseURL;
+    this.singleURL;
+  }
+  getArt(id) {
+    const URL = this.singleURL.replace('###', id);
+    if (!id) {
+      console.error('No Art ID provided.');
+    }
+    return this.doRequest(URL);
+  }
+}
+class HarvardApi extends BaseArtApi {}
+
+class RikjsApi extends BaseArtApi {
+  constructor() {
+    super();
     this.baseURL = `https://www.rijksmuseum.nl/api/en/collection?key=${process.env.RIJKSKEY}`;
     this.singleURL = `https://www.rijksmuseum.nl/api/en/collection/###?key=${process.env.RIJKSKEY}`;
     this.doRequest = function (URL, options) {
+      const museumapi = 'rijksmuseum';
       const optionStr = qs.stringify(options);
-
       return axios
         .get(URL + (options ? ['?', optionStr].join('') : ''))
         .then(
@@ -55,6 +71,7 @@ class ArtApi {
                     img,
                     imgWidth,
                     imgHeight,
+                    museumapi: museumapi,
                   };
                 });
               return data;
@@ -78,6 +95,7 @@ class ArtApi {
                 imgWidth,
                 imgHeight,
                 year,
+                museumapi: museumapi,
               };
             } else {
               return null;
@@ -91,16 +109,6 @@ class ArtApi {
         });
     };
   }
-  getArt(id) {
-    const URL = this.singleURL.replace('###', id);
-
-    if (!id) {
-      console.error('No beer ID provided.');
-    }
-
-    return this.doRequest(URL);
-  }
-
   getRandom(id) {
     let URL;
     if (!id && process.env.COMP && process.env.COMP == 'local') {
@@ -128,69 +136,29 @@ class ArtApi {
   }
 }
 
-/*
-
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-******************************************************
-
-
-*/
-class BaseArtApi {}
-class HarvardApi extends BaseArtApi {}
-
-class RikjsApi extends BaseArtApi {
+class ArtApi {
   constructor() {
-    this.baseURL = 'https://www.rijksmuseum.nl/api/en/collection?key=[api-key]';
-    this.doRequest = function (URL, options) {
-      //const optionStr = qs.stringify(options);
-
-      return axios
-        .get(URL + (options ? ['?', optionStr].join('') : ''))
-        .then(
-          function (res) {
-            if (res.status >= 400) {
-              console.error('Bad response from server');
-            }
-
-            return res.json();
-          }.bind(this)
-        )
-        .then(function (json) {
-          return json;
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-    };
+    this.rijksmuseum = new RikjsApi();
+    this.runapp = 'rijksmuseum';
   }
+  getArt(id) {
+    return this[this.runapp].getArt(id);
+  }
+  getRandom(id) {
+    return this[this.runapp].getRandom(id);
+  }
+  getRandoms() {
+    return this[this.runapp].getRandoms();
+  }
+  setMuseum(museum) {
+    if (this[museum]) this.runapp = museum;
+  }
+  getMuseum() {
+    return this.runapp;
+  }
+}
 
+class AAAAAA extends BaseArtApi {
   getArts(options) {
     const URL = `${this.baseURL}&xxxxxxxx`;
 
@@ -203,18 +171,6 @@ class RikjsApi extends BaseArtApi {
     if (!id) {
       console.error('No beer ID provided.');
     }
-
-    return this.doRequest(URL);
-  }
-
-  getRandom() {
-    const URL = `${this.baseURL}&xxxxxxxx`;
-
-    return this.doRequest(URL);
-  }
-
-  getRandoms() {
-    const URL = `${this.baseURL}&involvedMaker=Rembrandt+van+Rijn`;
 
     return this.doRequest(URL);
   }
