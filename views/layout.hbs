@@ -1,19 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{title}}</title>
 
-   <body>
+   <link rel="stylesheet" href="/stylesheets/new-age.min.css" />
 
-      {{{body}}}
+   <!-- Bootstrap core CSS -->
+   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <script src="/js/script.js"></script>
-   </body>
+   <!-- Custom fonts for this template -->
+   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/vendor/simple-line-icons/css/simple-line-icons.css">
+   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+   <!-- Plugin CSS -->
+   <link rel="stylesheet" href="/device-mockups/device-mockups.min.css">
+
+   <!-- Custom styles for this template -->
+   <link href="/stylesheets/new-age.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+         <a class="navbar-brand js-scroll-trigger" href="#page-top">Fun Fan Art</a>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            {{#if loggedUser}}
+
+            <ul class="navbar-nav ml-auto">
+               <li>Hello {{userGlobal.fullName}}</li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">WIP</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">WIP Random</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">Private</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">Logout</a>
+               </li>
+            </ul>
+
+            {{else}}
+
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a href="/views/auth/private.hbs" class="nav-link js-scroll-trigger">Log In</a>
+               </li>
+            </ul>
+
+            {{/if}}
+
+         </div>
+      </div>
+   </nav>
+
+   {{{body}}}
+
+   <section class="contact bg-primary" id="contact">
+      <div class="container">
+         <h2>We
+            <i class="fas fa-heart"></i>
+            new friends!
+         </h2>
+         <ul class="list-inline list-social">
+            <li class="list-inline-item social-twitter">
+               <a href="#">
+                  <i class="fab fa-twitter"></i>
+               </a>
+            </li>
+            <li class="list-inline-item social-facebook">
+               <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+               </a>
+            </li>
+            <li class="list-inline-item social-google-plus">
+               <a href="#">
+                  <i class="fab fa-google-plus-g"></i>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </section>
+
+   <footer>
+      <div class="container">
+         <p>&copy; Your Website 2020. All Rights Reserved.</p>
+         <ul class="list-inline">
+            <li class="list-inline-item">
+               <a href="#">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+               <a href="#">Terms</a>
+            </li>
+            <li class="list-inline-item">
+               <a href="#">FAQ</a>
+            </li>
+         </ul>
+      </div>
+   </footer>
+
+   <script src="/js/script.js"></script>
+
+   <!-- Bootstrap core JavaScript -->
+   <script src="/vendor/jquery/jquery.min.js"></script>
+   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+   <!-- Plugin JavaScript -->
+   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+   <!-- Custom scripts for this template -->
+   <script src="/js/new-age.min.js"></script>
+
+</body>
 
 </html>
