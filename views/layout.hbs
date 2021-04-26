@@ -38,21 +38,17 @@
             {{#if loggedUser}}
 
             <ul class="navbar-nav ml-auto">
-               <li>Hello {{userGlobal.fullName}}</li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Home</a>
+                  <a href="/" class="nav-link js-scroll-trigger">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">WIP</a>
+                  <a href="/private" class="nav-link js-scroll-trigger">WIP</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">WIP Random</a>
+                  <a href="/private" class="nav-link js-scroll-trigger">Profile</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Private</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Logout</a>
+                  <a href="/logout" class="nav-link js-scroll-trigger">Logout</a>
                </li>
             </ul>
 
@@ -60,10 +56,10 @@
 
             <ul class="navbar-nav ml-auto">
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger">Home</a>
+                  <a href="/" class="nav-link js-scroll-trigger">Home</a>
                </li>
                <li class="nav-item">
-                  <a href="/views/auth/private.hbs" class="nav-link js-scroll-trigger">Log In</a>
+                  <a href="/login" class="nav-link js-scroll-trigger">Log In</a>
                </li>
             </ul>
 

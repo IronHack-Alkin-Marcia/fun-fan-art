@@ -1,15 +1,17 @@
-<h2>Log In</h2>
-<form action="/login" method="POST">
-    <label for="username">User Name: </label>
-    <input type="text" name="username" id="username" required>
+<div class="su-form py-5">
+    <form action="/login" method="POST" class="form-container my-5 py-5">
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password" required>
+        <h2 class="mb-4">Log In</h2>
 
-    <button type="submit">Log In</button>
-</form>
+        <label for="username">User Name: </label>
+        <input type="text" name="username" id="username" required class="my-3 input-outline">
 
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required class="my-3 input-outline">
 
-{{#if message}}
-<p style="color: red">{{message}}</p>
-{{/if}}
+        <button type="submit" class="btn btn-outline btn-xl js-scroll-trigger mt-4">Log In</button>
+    </form>
+    {{#if message}}
+    <p style="color: red">{{message}}</p>
+    {{/if}}
+</div>
