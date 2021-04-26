@@ -36,6 +36,7 @@ const index = require('./routes/index');
 app.use('/', index);
 
 app.use('/', require('./routes/auth'));
+app.use('/artapi', require('./routes/artapi'));
 app.use('/testartapi', require('./routes/testartapi'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

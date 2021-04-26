@@ -30,19 +30,21 @@ class HarvardApi extends BaseArtApi {}
 class RikjsApi extends BaseArtApi {
   constructor() {
     super();
-    this.baseURL = `https://www.rijksmuseum.nl/api/en/collection?key=${process.env.RIJKSKEY}`;
+    this.baseURL = `https://www.rijksmuseum.nl/api/en/collection?key=${process.env.RIJKSKEY}&imgonly=1&type=painting`;
     this.singleURL = `https://www.rijksmuseum.nl/api/en/collection/###?key=${process.env.RIJKSKEY}`;
     this.doRequest = function (URL, options) {
       const museumapi = 'rijksmuseum';
       const optionStr = qs.stringify(options);
+      let fullURL = URL + (options ? ['&', optionStr].join('') : '');
+      console.log('fullURL', fullURL);
       return axios
-        .get(URL + (options ? ['?', optionStr].join('') : ''))
+        .get(fullURL)
         .then(
           function (res) {
             if (res.status >= 400) {
               console.error('Bad response from server');
             }
-
+            console.log();
             return res;
           }.bind(this)
         )
@@ -124,15 +126,19 @@ class RikjsApi extends BaseArtApi {
   }
   getRandoms() {
     let URL;
+    let options;
     if (process.env.COMP && process.env.COMP == 'local') {
-      let random = Math.floor(Math.random() * 2);
+      let random = Math.floor(Math.random() * 5);
       console.log('random', random);
       URL = `http://localhost:${process.env.PORT}/datasimu/tmpfile${random}.json`;
     } else {
-      URL = `${this.baseURL}&ps=20&p=0&involvedMaker=Rembrandt+van+Rijn`;
+      URL = `${this.baseURL}`;
+      let random = Math.floor(Math.random() * 210);
+      console.log('random', random);
+      options = { ps: 20, p: random };
     }
 
-    return this.doRequest(URL);
+    return this.doRequest(URL, options);
   }
 }
 
