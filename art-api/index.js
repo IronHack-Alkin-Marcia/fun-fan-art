@@ -53,7 +53,7 @@ class RikjsApi extends BaseArtApi {
                 .filter((art) => art.hasImage && art.showImage)
                 .map((art) => {
                   const {
-                    objectNumber: id,
+                    objectNumber: artId,
                     title,
                     principalOrFirstMaker: artist,
                     longTitle: smallDescription,
@@ -64,7 +64,7 @@ class RikjsApi extends BaseArtApi {
                     },
                   } = art;
                   return {
-                    id,
+                    artId,
                     title,
                     artist,
                     smallDescription,
@@ -77,7 +77,7 @@ class RikjsApi extends BaseArtApi {
               return data;
             } else if (json.data.artObject) {
               const {
-                objectNumber: id,
+                objectNumber: artId,
                 title,
                 principalOrFirstMaker: artist,
                 webImage: { url: img, width: imgWidth, height: imgHeight },
@@ -86,7 +86,7 @@ class RikjsApi extends BaseArtApi {
               } = json.data.artObject;
 
               return {
-                id,
+                artId,
                 title,
                 artist,
                 smallDescription,
