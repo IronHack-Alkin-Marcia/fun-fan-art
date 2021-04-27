@@ -23,7 +23,7 @@ router.get('/adduser', isAdmin(), (req, res, next) => {
   res.render('webconfig/adduser');
 });
 
-router.post('/adduser', (req, res, next) => {
+router.post('/adduser', isAdmin(), (req, res, next) => {
   const { username, role, email, fullName } = req.body;
   User.findOne({ username }).then((user) => {
     if (user !== null) {

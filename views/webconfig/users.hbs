@@ -10,7 +10,6 @@
         <div class="container-fluid">
 
           <div class="row">
-
             {{#each users}}
 
             <div class="card card-show my-4 box-shadow" style="width: 300px;">
@@ -30,10 +29,15 @@
                 <p class="text-muted"><i>{{fullName}}</i></p>
               </div>
               <div class="show-btn">
+
+                {{#isMyself _id ...loggedUser}}
+                {{else}}
                 <a href="/webconfig/{{_id}}/plus" class="btn btn-bg" title="Promote"><i class="fas fa-plus"></i></a>
                 <a href="/webconfig/{{_id}}/minus" class="btn btn-bg" title="Demote"><i class="fas fa-minus"></i></a>
                 <a href="/webconfig/{{_id}}/delete" class="btn btn-bg btn-bm"><i>Delete <i
                       class="fas fa-trash"></i></i></a>
+                {{/isMyself}}
+
               </div>
 
             </div>
