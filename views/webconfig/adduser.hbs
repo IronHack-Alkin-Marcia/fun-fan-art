@@ -1,0 +1,29 @@
+<div class="su-form py-5">
+  <form action="/webconfig/adduser" method="POST" class="form-container my-5 py-5">
+
+    <h2 class="mb-4">Add User</h2>
+    <p class="col-8">Password will be funfanart</p>
+    <p class="col-8 mb-1">to be changed by the user later</p>
+
+    <label for="username">User Name: </label>
+    <input type="text" name="username" id="username" required class="my-3 input-outline">
+
+    <label for="fullName">Full Name: </label>
+    <input type="text" name="fullName" id="fullName" class="my-3 input-outline">
+
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email" class="my-3 input-outline">
+
+    <label for="role">Role: </label>
+    <select name="role" id="role">
+      <option value="USER">User</option>
+      <option value="EDITOR">Editor</option>
+      <option value="ADMIN">Admin </option>
+    </select>
+
+    <button type="submit" class="btn btn-outline btn-xl js-scroll-trigger mt-4">Send</button>
+  </form>
+  {{#if message}}
+  <p style="color: red">{{message}}</p>
+  {{/if}}
+</div>

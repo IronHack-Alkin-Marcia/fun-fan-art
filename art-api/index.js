@@ -59,11 +59,7 @@ class RikjsApi extends BaseArtApi {
                     title,
                     principalOrFirstMaker: artist,
                     longTitle: smallDescription,
-                    headerImage: {
-                      url: img,
-                      width: imgWidth,
-                      height: imgHeight,
-                    },
+                    webImage: { url: img, width: imgWidth, height: imgHeight },
                   } = art;
                   return {
                     artId,
