@@ -12,9 +12,6 @@ const artSchema = new Schema(
     imgWidth: Number,
     imgHeight: Number,
     year: Number,
-    imgSml: String,
-    imgSmlWidth: Number,
-    imgSmlHeight: Number,
   },
   {
     timestamps: true,
