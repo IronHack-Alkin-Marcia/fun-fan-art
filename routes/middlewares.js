@@ -20,7 +20,33 @@ const loginCheck = () => {
   };
 };
 
+const isAdmin = () => {
+  return (req, res, next) => {
+    if (req.isAuthenticated() && req.user.role == 'ADMIN') {
+      next();
+    } else if (!req.isAuthenticated()) {
+      res.redirect('/login');
+    } else {
+      res.redirect('/private');
+    }
+  };
+};
+
+const isEditor = () => {
+  return (req, res, next) => {
+    if (req.isAuthenticated() && ['ADMIN', 'EDITOR'].includes(req.user.role)) {
+      next();
+    } else if (!req.isAuthenticated()) {
+      res.redirect('/login');
+    } else {
+      res.redirect('/private');
+    }
+  };
+};
+
 module.exports = {
   alreadyLogged,
   loginCheck,
+  isAdmin,
+  isEditor,
 };
