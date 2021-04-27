@@ -58,18 +58,18 @@ router.post(
 router.post('/signup', (req, res, next) => {
   const { username, password, email, fullName } = req.body;
   if (password.length < 8) {
-    return res.render('signup', {
+    return res.render('auth/signup', {
       message: 'Your password has to be 8 chars min',
     });
   }
   if (username === '' || email === '' || password === '' || fullName === '') {
-    return res.render('signup', {
+    return res.render('auth/signup', {
       message: 'Please fill in all obligatory fields',
     });
   }
   User.findOne({ username }).then((user) => {
     if (user !== null) {
-      res.render('signup', { message: 'This username is already taken' });
+      res.render('auth/signup', { message: 'This username is already taken' });
     } else {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);

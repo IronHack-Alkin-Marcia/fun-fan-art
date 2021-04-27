@@ -47,6 +47,11 @@
                <li class="nav-item">
                   <a href="/bookmark" class="nav-link js-scroll-trigger">Bookmarks</a>
                </li>
+               {{#isEditor loggedUser}}
+               <li class="nav-item">
+                  <a href="/webconfig" class="nav-link js-scroll-trigger">Config</a>
+               </li>
+               {{/isEditor}}
                <li class="nav-item">
                   <a href="/private" class="nav-link js-scroll-trigger">Profile</a>
                </li>

@@ -3,8 +3,10 @@
     <div class="container">
       <h2>{{loggedUser.fullName}}</h2>
       <a href="webconfig/artcheck" class="btn btn-outline btn-xl">Check Art DB</a>
+      {{#isAdmin loggedUser}}
       <a href="webconfig/users" class="btn btn-outline btn-xl">Check Users</a>
       <a href="webconfig/adduser" class="btn btn-outline btn-xl">Create User</a>
+      {{/isAdmin}}
     </div>
   </div>
 </section>

@@ -10,8 +10,10 @@
         <input type="password" name="password" id="password" required class="my-3 input-outline">
 
         <button type="submit" class="btn btn-outline btn-xl js-scroll-trigger mt-4">Log In</button>
+
+        {{#if message}}
+        <p class="col-8 mt-3 bg-danger text-white rounded">{{message}}</p>
+        {{/if}}
     </form>
-    {{#if message}}
-    <p style="color: red">{{message}}</p>
-    {{/if}}
+
 </div>
