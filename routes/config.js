@@ -1,11 +1,9 @@
 const router = require('express').Router();
 const User = require('../models/Users');
+const Art = require('../models/Art');
 const bcrypt = require('bcrypt');
 
 const { isAdmin, isEditor } = require('./middlewares');
-
-const ArtApi = require('../art-api');
-const artApi = new ArtApi();
 
 router.get('/', isEditor(), (req, res, next) => {
   res.render('webconfig/');
@@ -42,6 +40,16 @@ router.post('/adduser', isAdmin(), (req, res, next) => {
       }).then(() => res.redirect('/webconfig'));
     }
   });
+});
+
+router.get('/:id/plus', isAdmin(), (req, res, next) => {
+  res.render('blank');
+});
+router.get('/:id/minus', isAdmin(), (req, res, next) => {
+  res.render('blank');
+});
+router.get('/:id/delete', isAdmin(), (req, res, next) => {
+  res.render('blank');
 });
 
 module.exports = router;
