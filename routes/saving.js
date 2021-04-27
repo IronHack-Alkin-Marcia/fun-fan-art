@@ -18,7 +18,7 @@ router.get('/saveart/:id', loginCheck(), (req, res, next) => {
             user: req.user._id,
             art: createdArt._id,
           })
-            .then((_) => res.redirect('/private/bookmark'))
+            .then((_) => res.redirect('/bookmark'))
             .catch((error) => console.log(error));
         })
         .catch((error) => console.log(error));
