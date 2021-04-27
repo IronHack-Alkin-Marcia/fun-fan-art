@@ -1,38 +1,36 @@
-<section class="features" id="features">
+<section class="features main-bg" id="features">
   <div class="container">
     <div class="section-heading text-center">
-      <h2>Unlimited Features, Unlimited Fun</h2>
-      <p class="text-muted">Check out what you can do with this app theme!</p>
-      <hr>
+      <h2 class="pt-5">Discover some of the most inspirational works of art!</h2>
+      <p><i>Bookmark your favorite artists and their work.</i></p>
     </div>
+
     <div class="row">
       <div class="col-lg-12 my-auto">
         <div class="container-fluid">
+
           <div class="row">
 
             {{#each arts}}
 
-            <figure class="col-lg-3">
-              <div class="feature-item">
-                <div class="contain-image-icon">
-                  <a href="/artapi/art/{{artId}}">
-                    <img src="{{img}}" alt="{{title}}" />
-                  </a>
-                </div>
-                <a href="/artapi/art/{{artId}}">
-                  <h3>{{artist}}</h3>
-                </a>
-                <p class="text-muted">{{title}}</p>
+            <div class="card card-show my-4 box-shadow" style="width: 300px;">
+              <div class="card-img">
+                <img class="index-img-card" src="{{img}}" alt="{{title}}">
               </div>
-            </figure>
+              <div class="card-body">
+                <p class="card-text">{{artist}}</p>
+                <p class="text-muted"><i>{{title}}</i></p>
+              </div>
+              <a href="/artapi/art/{{artId}}" class="btn btn-bg index-btn"><i>View</i></a>
+            </div>
 
             {{/each}}
-
 
           </div>
 
         </div>
       </div>
     </div>
+
   </div>
 </section>
