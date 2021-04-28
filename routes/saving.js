@@ -14,21 +14,16 @@ router.get('/saveart/:id', loginCheck(), (req, res, next) => {
     .then((art) => {
       Art.findOneOrCreate({ artId: art.artId }, art)
         .then((createdArt) => {
-          console.log('THEN', createdArt);
-
           BookMark.findOneOrCreate({
             user: req.user._id,
             art: createdArt._id,
           })
             .then(() => res.redirect('/bookmark'))
-            .catch((error) => console.log(error));
+            .catch((error) => res.redirect('/bookmark'));
         })
-        .catch((error) => {
-          console.log('CATCH', error);
-          res.redirect('/bookmark');
-        });
+        .catch((error) => res.redirect('/bookmark'));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => res.redirect('/bookmark'));
 });
 
 module.exports = router;
