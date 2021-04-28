@@ -21,6 +21,15 @@ const artSchema = new Schema(
   }
 );
 
+artSchema.static(
+  'findOneOrCreate',
+  async function findOneOrCreate(condition, art) {
+    const one = await this.findOne(condition);
+
+    return one || this.create(art);
+  }
+);
+
 const Art = model('Art', artSchema);
 
 module.exports = Art;

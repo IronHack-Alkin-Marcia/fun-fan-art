@@ -17,6 +17,15 @@ const bookMarkSchema = new Schema(
   }
 );
 
+bookMarkSchema.static(
+  'findOneOrCreate',
+  async function findOneOrCreate({ art, user }) {
+    const one = await this.findOne({ art, user });
+
+    return one || this.create({ art, user });
+  }
+);
+
 const BookMark = model('BookMark', bookMarkSchema);
 
 module.exports = BookMark;
