@@ -2,7 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const artSchema = new Schema(
   {
-    artId: String,
+    artId: {
+      type: String,
+      unique: true,
+    },
     museumapi: String,
     title: String,
     artist: String,
