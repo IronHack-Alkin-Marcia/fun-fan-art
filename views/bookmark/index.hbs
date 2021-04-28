@@ -11,26 +11,30 @@
           <div class="row">
 
             {{#each bookmark}}
-            {{#with art}}
 
-            <div class="card my-4 box-shadow card-show mr-3" style="width: 350px">
+            <div class="card my-4 box-shadow card-show" style="width: 400px">
               <div class="card-img">
-                <img class="index-img-card" src="{{img}}" alt="{{title}}">
+                <img class="index-img-card" src="{{art.img}}" alt="{{art.title}}">
               </div>
               <div class="card-body">
-                <form action="/bookmark/{{..._id}}/savenote" method="POST">
+                <h5>{{art.title}}</h5>
+                <form action="/bookmark/{{_id}}/savenote" method="POST">
                   <label for="comment">Note: </label>
                   <input type="text" id="comment" name="comment">
-                  <button type="submit">Add</button>
+                  <button type="submit">ADD</button>
+                </form>
+                <form action="/bookmark/{{_id}}/deletenote" method="POST">
+                  <input type="hidden" value="0" name="noteNum">
+                  <p>{{comments.[0]}}</p>
+                  <button type="submit">DEL</button>
                 </form>
               </div>
               <div class="show-btn">
-                <a href="/artapi/art/{{artId}}" class="btn btn-bg index-btn"><i>View</i></a>
-                <a href="/artapi/art/{{artId}}" class="btn btn-bg index-btn"><i>Remove</i></a>
+                <a href="/artapi/art/{{art.artId}}" class="btn btn-bg index-btn"><i>View</i></a>
+                <a href="/artapi/art/{{art.artId}}" class="btn btn-bg index-btn"><i>Remove</i></a>
               </div>
             </div>
 
-            {{/with}}
             {{/each}}
 
 
