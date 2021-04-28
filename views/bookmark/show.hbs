@@ -1,4 +1,3 @@
-{{bookmark}}
 {{#with bookmark}}
 <section class="features main-bg" id="features">
   <div class="container">
@@ -23,11 +22,13 @@
                 <p class="card-text"><span class="pretty">Year:</span> {{art.year}}</p>
 
                 {{#if comments}}
-                <p class="card-text"><span class="pretty">Comments:</span> {{art.year}}</p>
-
-                {{#each comments}}
-                <p class="card-text"><span class="pretty">--</span> {{this}}</p>
-                {{/each}}
+                <p class="card-text"><span class="pretty">Comments:</span>
+                <ul>
+                  {{#each comments}}
+                  <li>{{this}}</li>
+                  {{/each}}
+                </ul>
+                </p>
 
 
                 {{/if}}
