@@ -41,7 +41,7 @@ router.post('/bookmark/:id/savenote', (req, res, next) => {
 
 router.post('/bookmark/:id/deletenote', (req, res, next) => {
     const { noteNum } = req.body;
-    BookMark.findByIdAndUpdate(req.params.id)
+    BookMark.findByIdAndUpdate(req.params.id, { $arrayElemAt: [] })
         .then(() => {
             res.redirect('/bookmark');
         })
