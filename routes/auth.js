@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt');
 const { alreadyLogged, loginCheck } = require('./middlewares');
 
 router.get('/login', alreadyLogged(), (req, res, next) => {
-  console.log('hello from login');
   res.render('auth/login');
 });
 

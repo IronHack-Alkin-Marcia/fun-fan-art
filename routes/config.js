@@ -37,34 +37,43 @@ router.post('/adduser', isAdmin(), (req, res, next) => {
         fullName,
         role,
         password: hash,
-      }).then(() => res.redirect('/webconfig'));
+      }).then(() => res.redirect('/webconfig/users'));
     }
   });
 });
 
-router.get('/:id/plus', isAdmin(), (req, res, next) => {
-  User.findById(req.params.id)
-    .then((user) => {
-      let newrole = roleChange(user.role, 1);
-    })
-    .catch((err) => next(err));
-
-  res.redirect('/webconfig/users');
-});
-router.get('/:id/minus', isAdmin(), (req, res, next) => {
-  res.redirect('/webconfig/users');
-});
-router.get('/:id/delete', isAdmin(), (req, res, next) => {
-  res.redirect('/webconfig/users');
-});
-
-function roleChange(role, direction) {
-  const roles = ['ADMIN', 'EDITOR', 'USER'];
+const roleChange = (role, direction) => {
+  const roles = ['USER', 'EDITOR', 'ADMIN'];
   const curIndex = roles.indexOf(role);
   const newInex = curIndex + direction;
-  if (found >= 0 && newInex >= 0 && newInex < roles.length) {
+  if (curIndex >= 0 && newInex >= 0 && newInex < roles.length) {
     return roles[newInex];
   }
   return false;
-}
+};
+
+const doUpdateRole = (req, res, next) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      let direction = req.path.substr(-4, 4) == 'plus' ? 1 : -1;
+      let newRole = roleChange(user.role, direction);
+      if (newRole) {
+        User.findByIdAndUpdate(user._id, { role: newRole }).then(() =>
+          res.redirect('/webconfig/users')
+        );
+      } else {
+        res.redirect('/webconfig/users');
+      }
+    })
+    .catch((err) => res.redirect('/webconfig/users'));
+};
+
+router.get('/:id/plus', isAdmin(), doUpdateRole);
+router.get('/:id/minus', isAdmin(), doUpdateRole);
+router.get('/:id/delete', isAdmin(), (req, res, next) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/webconfig/users'))
+    .catch((err) => res.redirect('/webconfig/users'));
+});
+
 module.exports = router;
