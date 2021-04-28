@@ -43,13 +43,28 @@ router.post('/adduser', isAdmin(), (req, res, next) => {
 });
 
 router.get('/:id/plus', isAdmin(), (req, res, next) => {
-  res.render('blank');
+  User.findById(req.params.id)
+    .then((user) => {
+      let newrole = roleChange(user.role, 1);
+    })
+    .catch((err) => next(err));
+
+  res.redirect('/webconfig/users');
 });
 router.get('/:id/minus', isAdmin(), (req, res, next) => {
-  res.render('blank');
+  res.redirect('/webconfig/users');
 });
 router.get('/:id/delete', isAdmin(), (req, res, next) => {
-  res.render('blank');
+  res.redirect('/webconfig/users');
 });
 
+function roleChange(role, direction) {
+  const roles = ['ADMIN', 'EDITOR', 'USER'];
+  const curIndex = roles.indexOf(role);
+  const newInex = curIndex + direction;
+  if (found >= 0 && newInex >= 0 && newInex < roles.length) {
+    return roles[newInex];
+  }
+  return false;
+}
 module.exports = router;
