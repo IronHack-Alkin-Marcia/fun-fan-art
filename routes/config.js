@@ -8,8 +8,17 @@ const { isAdmin, isEditor } = require('./middlewares');
 router.get('/', isEditor(), (req, res, next) => {
   res.render('webconfig/');
 });
+
 router.get('/artcheck', isEditor(), (req, res, next) => {
-  res.render('blank');
+  Art.find()
+    .then((arts) => res.render('webconfig/artcheck', { arts }))
+    .catch((err) => next(err));
+});
+
+router.get('/artcheck/:id/delete', isEditor(), (req, res, next) => {
+  Art.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/webconfig/artcheck'))
+    .catch((err) => res.redirect('/webconfig/artcheck'));
 });
 
 router.get('/users', isAdmin(), (req, res, next) => {
