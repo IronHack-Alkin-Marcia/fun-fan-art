@@ -351,9 +351,10 @@ section.features .feature-item i {
 section.cta {
     position: relative;
     padding: 250px 0;
-    background-image: url(../img/bg-cta.jpg);
+    background-image: url('https://images.unsplash.com/photo-1545989253-02cc26577f88?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 section.cta .cta-content {
@@ -647,6 +648,12 @@ footer ul li a:hover {
     width: 12vw;
 }
 
+.role-bar {
+    border-radius: 20px;
+    border: 1px solid #222;
+    width: 4vw;
+}
+
 .comment-btn {
     background-color: #fcbd20;
     color: #222;
@@ -658,4 +665,8 @@ footer ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.del-comment {
+    display: flex;
 }
