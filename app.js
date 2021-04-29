@@ -30,7 +30,7 @@ require('./config/hbshelpers')(hbs);
 // default value for title local
 const projectName = 'fun-fan-art';
 const capitalized = (string) =>
-  string[0].toUpperCase() + string.slice(1).toLowerCase();
+    string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 
@@ -43,6 +43,7 @@ app.use('/artapi', require('./routes/artapi'));
 app.use('/webconfig', require('./routes/config'));
 app.use('/', require('./routes/saving'));
 app.use('/bookmark', require('./routes/bookmark'));
+app.use('/soon', require('./routes/soon'));
 
 // remove before going life
 app.use('/testartapi', require('./routes/testartapi'));
