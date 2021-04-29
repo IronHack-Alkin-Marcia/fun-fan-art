@@ -3,15 +3,21 @@
         <div class="row h-100">
             <div class="col-lg-7 my-auto">
                 <div class="header-content mx-auto">
-                    <h1 class="mb-5">Share your love for art! Discover new artists and their works.</h1>
+                    <h1 class="mb-5">Share your love for art! Discover new artists and
+                        their works.</h1>
                     <a href="/signup" class="btn btn-outline btn-xl js-scroll-trigger">Join now for
                         Free!</a>
                 </div>
             </div>
             <div class="col-lg-5 my-5">
                 <div class="device-container my-5">
+                    {{#if art}}
+                    <img src="{{art.img}} " alt="home image" class="header-img my-5">
+                    {{else }}
                     <img src="https://lh3.googleusercontent.com/hDN8_JS4BbbksBXkxIDUldJvooejHBfQjgD3b_Jr73HjVOAs8thpnvCJA3WUtQFxlbjx-QB1-IyqhgEiM4dFLFk1Sg=s0"
                         alt="home image" class="header-img my-5">
+                    {{/if}}
+
                 </div>
             </div>
         </div>
