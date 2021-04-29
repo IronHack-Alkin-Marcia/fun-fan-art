@@ -20,12 +20,22 @@
                 <h5 class="card-title"><span class="pretty">Artist:</span> {{art.artist}}</h5>
                 <p class="card-text"><span class="pretty">Description:</span> {{art.description}}</p>
                 <p class="card-text"><span class="pretty">Year:</span> {{art.year}}</p>
-
+                <div class="comment-box">
+                  <form action="/bookmark/{{_id}}/savenote" method="POST">
+                    <label for="comment" class="pretty">Comment: </label>
+                    <input type="text" id="comment" name="comment" class="comment-bar">
+                    <button type="submit" class="ml-3 comment-btn"><i>ADD</i></button>
+                    <form action="/bookmark/{{_id}}/deletenote" method="POST">
+                      <input type="hidden" value="0" name="noteNum">
+                      <button type="submit" class="ml-2 comment-btn"><i>DEL</i></button>
+                    </form>
+                  </form>
+                </div>
                 {{#if comments}}
-                <p class="card-text"><span class="pretty">Comments:</span>
-                <ul>
+                {{!-- <p class="card-text"><span class="pretty">Comments:</span> --}}
+                <ul class="comment-list">
                   {{#each comments}}
-                  <li>{{this}}</li>
+                  <li><span>-</span>{{this}}</li>
                   {{/each}}
                 </ul>
                 </p>
