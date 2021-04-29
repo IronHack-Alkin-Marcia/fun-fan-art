@@ -11,9 +11,34 @@ router.get('/', isEditor(), (req, res, next) => {
 });
 
 router.get('/artcheck', isEditor(), (req, res, next) => {
+  /* NOT A GOOD VERSION BUT OUT OF TIME */
+  Promise.all([
+    Art.find().then((arts) => arts),
+    BookMark.find()
+      .populate('user')
+      .then((bookmarks) => bookmarks),
+  ])
+    .then(([arts, bookmarks]) => {
+      for (let ind in arts) {
+        arts[ind].userList = [];
+        for (let bookmark of bookmarks) {
+          if (String(arts[ind]._id) == String(bookmark.art._id)) {
+            arts[ind].userList.push({
+              fullName: bookmark.user.fullName,
+              _id: bookmark.user._id,
+            });
+          }
+        }
+      }
+      res.render('webconfig/artcheck', { arts });
+    })
+    .catch((err) => next(err));
+
+  /*
   Art.find()
     .then((arts) => res.render('webconfig/artcheck', { arts }))
     .catch((err) => next(err));
+  */
 });
 
 router.get('/artcheck/:id/delete', isEditor(), (req, res, next) => {

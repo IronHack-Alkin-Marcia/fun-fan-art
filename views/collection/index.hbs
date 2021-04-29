@@ -22,6 +22,14 @@
                 <p class="card-text">{{artist}}</p>
                 <p class="text-muted"><i>{{title}}</i></p>
                 <p class="text-muted"><i>{{smallDescription}}</i></p>
+                {{#if userList}}
+                <p class="text-muted"><i>
+                    <span>Bookmarked by: </span><br>
+                    {{#each userList}}
+                    - {{this.fullName}} <br>
+                    {{/each}}
+                  </i></p>
+                {{/if}}
               </div>
 
             </div>
