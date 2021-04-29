@@ -25,17 +25,17 @@
                     <label for="comment" class="pretty">Comment: </label>
                     <input type="text" id="comment" name="comment" class="comment-bar">
                     <button type="submit" class="ml-3 comment-btn"><i>ADD</i></button>
-                    <form action="/bookmark/{{_id}}/deletenote" method="POST">
-                      <input type="hidden" value="0" name="noteNum">
-                      <button type="submit" class="ml-2 comment-btn"><i>DEL</i></button>
-                    </form>
+
                   </form>
                 </div>
                 {{#if comments}}
-                {{!-- <p class="card-text"><span class="pretty">Comments:</span> --}}
                 <ul class="comment-list">
                   {{#each comments}}
-                  <li><span>-</span>{{this}}</li>
+                  <li><span>-</span>{{this}}<form action="/bookmark/{{..._id}}/deletenote" method="POST">
+                      <input type="hidden" value="{{@index}}" name="noteNum">
+                      <button type="submit" class="ml-2 comment-btn"><i>DEL</i></button>
+                    </form>
+                  </li>
                   {{/each}}
                 </ul>
                 </p>

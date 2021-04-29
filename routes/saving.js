@@ -32,7 +32,7 @@ router.post('/bookmark/:id/savenote', (req, res, next) => {
     BookMark.findByIdAndUpdate(req.params.id, { $push: { comments: comment } })
         .then((thisIsForLog) => {
             console.log(thisIsForLog);
-            res.redirect('/bookmark');
+            res.redirect(`/bookmark/${req.params.id}`);
         })
         .catch(err => {
             next(err);
