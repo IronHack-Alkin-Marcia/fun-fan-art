@@ -623,3 +623,10 @@ footer ul li a:hover {
     text-decoration: none;
     font-size: 1.5rem;
 }
+
+.search-bar {
+    width: 30vw;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #222;
+}
