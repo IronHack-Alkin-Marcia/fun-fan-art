@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/Users');
 const Art = require('../models/Art');
+const BookMark = require('../models/BookMark');
 const bcrypt = require('bcrypt');
 
 const { isAdmin, isEditor } = require('./middlewares');
@@ -16,6 +17,13 @@ router.get('/artcheck', isEditor(), (req, res, next) => {
 });
 
 router.get('/artcheck/:id/delete', isEditor(), (req, res, next) => {
+  Promise.all([
+    Art.findByIdAndDelete(req.params.id),
+    BookMark.findOneAndRemove({ art: req.params.id }),
+  ])
+    .then(() => res.redirect('/webconfig/artcheck'))
+    .catch((err) => res.redirect('/webconfig/artcheck'));
+
   Art.findByIdAndDelete(req.params.id)
     .then(() => res.redirect('/webconfig/artcheck'))
     .catch((err) => res.redirect('/webconfig/artcheck'));
