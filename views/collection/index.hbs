@@ -1,8 +1,8 @@
 <section class="features main-bg" id="features">
   <div class="container">
     <div class="section-heading text-center">
-      <h2 class="pt-5">Edit all booked Art</h2>
-      <p><i>Delete Art that are no longer showing properly</i></p>
+      <h2 class="pt-5">All Art Selected</h2>
+      <p><i>View what you and all other users bookmarked</i></p>
     </div>
 
     <div class="row">
@@ -21,8 +21,9 @@
               <div class="card-body">
                 <p class="card-text">{{artist}}</p>
                 <p class="text-muted"><i>{{title}}</i></p>
+                <p class="text-muted"><i>{{smallDescription}}</i></p>
               </div>
-              <a href="/webconfig/artcheck/{{_id}}/delete" class="btn btn-bg index-btn"><i>Remove</i></a>
+
             </div>
 
             {{/each}}
