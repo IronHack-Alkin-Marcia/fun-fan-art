@@ -19,11 +19,11 @@ router.get('/saveart/:id', loginCheck(), (req, res, next) => {
                             art: createdArt._id,
                         })
                         .then(() => res.redirect('/bookmark'))
-                        .catch((error) => res.redirect('/bookmark'));
+                        .catch((error) => next(error));
                 })
-                .catch((error) => res.redirect('/bookmark'));
+                .catch((error) => next(error));
         })
-        .catch((error) => res.redirect('/bookmark'));
+        .catch((error) => next(error));
 });
 
 router.post('/bookmark/:id/savenote', (req, res, next) => {
