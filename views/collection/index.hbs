@@ -1,0 +1,40 @@
+<section class="features main-bg" id="features">
+  <div class="container">
+    <div class="section-heading text-center">
+      <h2 class="pt-5">Edit all booked Art</h2>
+      <p><i>Delete Art that are no longer showing properly</i></p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 my-auto">
+        <div class="container-fluid">
+
+          <div class="row">
+
+            {{#each arts}}
+
+
+            <div class="card card-show my-4 box-shadow" style="width: 300px;">
+              <div class="card-img">
+                <img class="index-img-card" src="{{img}}" alt="{{title}}">
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{artist}}</p>
+                <p class="text-muted"><i>{{title}}</i></p>
+              </div>
+              <a href="/webconfig/artcheck/{{_id}}/delete" class="btn btn-bg index-btn"><i>Remove</i></a>
+            </div>
+
+            {{/each}}
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

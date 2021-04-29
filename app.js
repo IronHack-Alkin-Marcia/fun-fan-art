@@ -43,6 +43,7 @@ app.use('/artapi', require('./routes/artapi'));
 app.use('/webconfig', require('./routes/config'));
 app.use('/', require('./routes/saving'));
 app.use('/bookmark', require('./routes/bookmark'));
+app.use('/collection', require('./routes/collection'));
 
 // remove before going life
 app.use('/testartapi', require('./routes/testartapi'));

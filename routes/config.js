@@ -23,10 +23,6 @@ router.get('/artcheck/:id/delete', isEditor(), (req, res, next) => {
   ])
     .then(() => res.redirect('/webconfig/artcheck'))
     .catch((err) => res.redirect('/webconfig/artcheck'));
-
-  Art.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/webconfig/artcheck'))
-    .catch((err) => res.redirect('/webconfig/artcheck'));
 });
 
 router.get('/users', isAdmin(), (req, res, next) => {
