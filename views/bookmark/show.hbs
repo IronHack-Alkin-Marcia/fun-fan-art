@@ -32,7 +32,7 @@
                 <ul class="comment-list">
                   {{#each comments}}
                   <li><span>-</span>{{this}}<form action="/bookmark/{{..._id}}/deletenote" method="POST">
-                      <input type="hidden" value="{{@index}}" name="noteNum">
+                      <input type="hidden" value="{{this}}" name="noteText">
                       <button type="submit" class="ml-2 comment-btn"><i>DEL</i></button>
                     </form>
                   </li>
