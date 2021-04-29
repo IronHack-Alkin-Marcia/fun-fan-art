@@ -7,10 +7,8 @@ const LocalStrategy = require('passport-local').Strategy;
 module.exports = (app) => {
   passport.use(
     new LocalStrategy((username, password, done) => {
-      console.log('LocalStrategy', username);
       User.findOne({ username })
         .then((user) => {
-          console.log('LocalStrategy findOne', user);
           if (user === null) {
             return done(null, false, { message: 'Wrong Credentials' });
           } else if (!bcrypt.compareSync(password, user.password)) {

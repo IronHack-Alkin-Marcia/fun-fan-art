@@ -44,7 +44,6 @@ class RikjsApi extends BaseArtApi {
             if (res.status >= 400) {
               console.error('Bad response from server');
             }
-            console.log();
             return res;
           }.bind(this)
         )
@@ -130,12 +129,10 @@ class RikjsApi extends BaseArtApi {
     let options;
     if (process.env.COMP && process.env.COMP == 'local') {
       let random = Math.floor(Math.random() * 5);
-      console.log('random', random);
       URL = `http://localhost:${process.env.PORT}/datasimu/tmpfile${random}.json`;
     } else {
       URL = `${this.baseURL}`;
       let random = Math.floor(Math.random() * 210);
-      console.log('random', random);
       options = { ps: 20, p: random };
     }
 
