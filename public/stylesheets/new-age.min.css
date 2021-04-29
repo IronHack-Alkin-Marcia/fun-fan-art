@@ -602,3 +602,31 @@ footer ul li a:hover {
     justify-content: space-between;
     align-items: center;
 }
+
+.soon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fdcc52;
+    width: 100vw;
+    height: 90vh;
+}
+
+.soon h1 {
+    font-family: 'Dancing Script', Helvetica, Arial, sans-serif;
+    font-size: 10rem;
+}
+
+.soon a {
+    color: #222;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.search-bar {
+    width: 30vw;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #222;
+}
