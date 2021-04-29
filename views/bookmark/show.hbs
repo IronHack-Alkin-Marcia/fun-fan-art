@@ -2,7 +2,7 @@
 <section class="features main-bg" id="features">
   <div class="container">
     <div class="section-heading text-center">
-      <h2 class="pt-5">{{art.title}}</h2>
+      <h2 class="pt-5 mt-5">{{art.title}}</h2>
       <p><i>{{art.smallDescription}}</i></p>
     </div>
     <div class="row">
@@ -13,14 +13,14 @@
           <div class="row">
 
 
-            <div class="card card-show box-shadow" style="width: 700px">
+            <div class="card card-show box-shadow mb-5" style="width: 700px">
               <img class="card-img-top" src="{{art.img}}" alt="{{art.title}}">
               <div class="card-body">
                 <h3 class="card-title">{{art.title}}</h3>
                 <h5 class="card-title"><span class="pretty">Artist:</span> {{art.artist}}</h5>
                 <p class="card-text"><span class="pretty">Description:</span> {{art.description}}</p>
                 <p class="card-text"><span class="pretty">Year:</span> {{art.year}}</p>
-                <div class="comment-box">
+                <div class="comment-box mb-3">
                   <form action="/bookmark/{{_id}}/savenote" method="POST">
                     <label for="comment" class="pretty">Comment: </label>
                     <input type="text" id="comment" name="comment" class="comment-bar">
@@ -29,17 +29,17 @@
                   </form>
                 </div>
                 {{#if comments}}
-                <ul class="comment-list">
+
+                <div class="comment-list">
                   {{#each comments}}
-                  <li><span>-</span>{{this}}<form action="/bookmark/{{..._id}}/deletenote" method="POST">
-                      <input type="hidden" value="{{@index}}" name="noteNum">
+                  <div class="del-comment my-4"><span>-</span>{{this}}<form action="/bookmark/{{..._id}}/deletenote"
+                      method="POST">
+                      <input type="hidden" value="{{this}}" name="noteText">
                       <button type="submit" class="ml-2 comment-btn"><i>DEL</i></button>
                     </form>
-                  </li>
+                  </div>
                   {{/each}}
-                </ul>
-                </p>
-
+                </div>
 
                 {{/if}}
                 <div class="show-btn">

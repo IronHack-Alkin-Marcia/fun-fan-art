@@ -50,10 +50,10 @@ router.post('/bookmark/:id/deleteBookMark', (req, res, next) => {
 });
 
 router.post('/bookmark/:id/deletenote', (req, res, next) => {
-    const { noteNum } = req.body;
-    BookMark.findByIdAndUpdate({ cn: req.params.name }, { $pullAll: { uid: [req.params.deleteUid] } })
+    const { noteText } = req.body;
+    BookMark.findByIdAndUpdate(req.params.id, { $pullAll: { comments: [noteText] } })
         .then(() => {
-            res.redirect('/bookmark');
+            res.redirect(`/bookmark/${req.params.id}`);
         })
         .catch(err => {
             next(err);
