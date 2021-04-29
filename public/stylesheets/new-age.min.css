@@ -630,3 +630,26 @@ footer ul li a:hover {
     border-radius: 20px;
     border: 1px solid #222;
 }
+
+.comment-list {
+    list-style-type: none;
+    font-size: 1.2rem;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+}
+
+.comment-bar {
+    border-radius: 20px;
+    border: 1px solid #222;
+    width: 12vw;
+}
+
+.comment-btn {
+    background-color: #fcbd20;
+    color: #222;
+    border: 1px solid #222;
+    border-radius: 20px;
+}

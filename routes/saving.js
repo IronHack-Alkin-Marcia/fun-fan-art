@@ -39,6 +39,16 @@ router.post('/bookmark/:id/savenote', (req, res, next) => {
         });
 });
 
+router.post('/bookmark/:id/deleteBookMark', (req, res, next) => {
+    BookMark.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.redirect('/bookmark')
+        })
+        .catch(err => {
+            next(err);
+        });
+});
+
 router.post('/bookmark/:id/deletenote', (req, res, next) => {
     const { noteNum } = req.body;
     BookMark.findByIdAndUpdate({ cn: req.params.name }, { $pullAll: { uid: [req.params.deleteUid] } })
