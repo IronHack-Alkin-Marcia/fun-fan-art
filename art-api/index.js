@@ -120,6 +120,11 @@ class RikjsApi extends BaseArtApi {
 
     return this.doRequest(URL);
   }
+  getSearch(q) {
+    let URL = `${this.baseURL}&toppieces=1`;
+    let options = { q };
+    return this.doRequest(URL, options);
+  }
   getRandoms() {
     let URL;
     let options;
@@ -151,6 +156,9 @@ class ArtApi {
   }
   getRandoms() {
     return this[this.runapp].getRandoms();
+  }
+  getSearch(q) {
+    return this[this.runapp].getSearch(q);
   }
   setMuseum(museum) {
     if (this[museum]) this.runapp = museum;
