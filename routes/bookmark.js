@@ -26,4 +26,9 @@ router.get('/:id', loginCheck(), (req, res, next) => {
     .catch((error) => next(error));
 });
 
+router.get('/:id/delete', loginCheck(), (req, res, next) => {
+  BookMark.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/bookmark'))
+    .catch((err) => res.redirect('/bookmark'));
+});
 module.exports = router;
