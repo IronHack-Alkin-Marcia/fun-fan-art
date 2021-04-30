@@ -51,7 +51,7 @@
                     {{#if ...tags}}
 
                     <label for="tag" class="pretty">tag: </label>
-                    <select name="tag" id="tag">
+                    <select class="mr-2 select-tag" name="tag" id="tag">
                       <option value="">--Select One--</option>
                       {{#each ...tags}}
                       <option value="{{this}}" {{{selector this ...tag}}}>{{this}}</option>
