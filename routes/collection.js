@@ -16,41 +16,25 @@ router.get('/', loginCheck(), (req, res, next) => {
     .then(([arts, bookmarks]) => {
       for (let ind in arts) {
         arts[ind].userList = [];
+        let tagList = [];
         for (let bookmark of bookmarks) {
           if (String(arts[ind]._id) == String(bookmark.art._id)) {
             arts[ind].userList.push({
               fullName: bookmark.user.fullName,
               _id: bookmark.user._id,
             });
+            if (bookmark.tag) {
+              tagList.push(bookmark.tag);
+            }
           }
+        }
+        if (tagList) {
+          arts[ind].tagList = [...new Set(tagList)];
         }
       }
       res.render('collection/', { arts });
     })
     .catch((err) => next(err));
-
-  /*
-  Art.find()
-    .then((arts) => res.render('collection/', { arts }))
-    .catch((err) => next(err)); */
-  /*
-  Art.aggregate([
-    { $match: { artist: 'Otto EErelman' } },
-    {
-      $lookup: {
-        from: 'bookmasks',
-        localField: '_id',
-        foreignField: 'art',
-        as: 'bookmark',
-      },
-    },
-  ]).exec((err, art) => {
-    console.log(err, art);
-    res.render('collection/', { art });
-  });
-
-
-  */
 });
 
 module.exports = router;

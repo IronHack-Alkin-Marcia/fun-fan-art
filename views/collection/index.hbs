@@ -30,6 +30,16 @@
                     {{/each}}
                   </i></p>
                 {{/if}}
+
+                {{#if tagList}}
+                <p class="text-muted"><i>
+                    <span>Tagged as: </span><br>
+                    {{#each tagList}}
+                    - {{this}} <br>
+                    {{/each}}
+                  </i></p>
+                {{/if}}
+
               </div>
               <a href="/artapi/art/{{artId}}" class="btn btn-bg index-btn"><i>View</i></a>
             </div>
