@@ -1,15 +1,8 @@
 <section class="features main-bg" id="features">
   <div class="container">
     <div class="section-heading text-center">
-      <h2 class="pt-5 mt-5">Your Selected art: </h2>
-      {{#if tags}}
-      <p><i>
-          <a class="link-unstyled" href="/bookmark/tags/0">no Tag</a>
-          {{#each tags}}
-          / <a class="link-unstyled" href="/bookmark/tags/{{this}}">{{this}}</a>
-          {{/each}}
-        </i></p>
-      {{/if}}
+      <h2 class="pt-5 mt-5">{{subtitle}}</h2>
+
     </div>
 
     <div class="row">
