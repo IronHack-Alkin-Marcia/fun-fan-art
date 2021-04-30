@@ -56,6 +56,14 @@ router.post('/bookmark/:id/deletenote', (req, res, next) => {
     });
 });
 
+router.post('/bookmark/:id/savetag', (req, res, next) => {
+  const { tag, newtag } = req.body;
+  let savetag = newtag || tag;
+  BookMark.findByIdAndUpdate(req.params.id, { tag: savetag })
+    .then(() => res.redirect(`/bookmark/${req.params.id}`))
+    .catch((err) => next(err));
+});
+
 module.exports = router;
 
 /*

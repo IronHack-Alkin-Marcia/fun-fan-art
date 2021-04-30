@@ -42,6 +42,32 @@
                 </div>
 
                 {{/if}}
+
+
+
+
+                <div class="comment-box mb-3">
+                  <form action="/bookmark/{{_id}}/savetag" method="POST">
+                    {{#if ...tags}}
+
+                    <label for="tag" class="pretty">tag: </label>
+                    <select name="tag" id="tag">
+                      <option value="">--Select One--</option>
+                      {{#each ...tags}}
+                      <option value="{{this}}" {{{selector this ...tag}}}>{{this}}</option>
+                      {{/each}}
+                    </select>
+                    {{/if}}
+                    <label for="newtag" class="pretty">{{#if ...tags}} or new tag: {{else}}Tag: {{/if}}</label>
+                    <input type="text" id="newtag" name="newtag" class="comment-bar">
+                    <button type="submit" class="ml-3 comment-btn"><i>ADD</i></button>
+
+                  </form>
+                </div>
+
+
+
+
                 <div class="show-btn">
                   <a href="/bookmark/" class="btn btn-bg"><i>Go Back</i></a>
 

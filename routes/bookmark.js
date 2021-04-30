@@ -13,10 +13,16 @@ router.get('/', loginCheck(), (req, res, next) => {
 });
 
 router.get('/:id', loginCheck(), (req, res, next) => {
-  BookMark.findById(req.params.id)
-    .populate('art')
-    .then((bookmark) => res.render('bookmark/show', { bookmark }))
-    .catch((error) => next(error));
+  Promise.all([
+    BookMark.find({ user: req.user._id })
+      .distinct('tag')
+      .then((tags) => tags),
+    BookMark.findById(req.params.id)
+      .populate('art')
+      .then((bookmark) => bookmark),
+  ])
+    .then(([tags, bookmark]) => res.render('bookmark/show', { bookmark, tags }))
+    .catch((err) => next(err));
 });
 
 router.get('/:id/delete', loginCheck(), (req, res, next) => {
