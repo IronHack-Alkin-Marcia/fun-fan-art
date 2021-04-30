@@ -28,6 +28,11 @@
                 <h3 class="card-title"><i>{{art.title}}</i></h3>
                 <h5 class="card-title"><span class="pretty">Artist:</span> {{art.artist}}</h5>
                 <p class="card-text"><span class="pretty">Description:</span> {{art.description}}</p>
+
+                {{#if tag}}
+                <p class="text-muted"><i><span class="pretty">Tag: </span>{{tag}}</i></p>
+                {{/if}}
+
               </div>
               <div class="show-btn">
                 <a href="/bookmark/{{_id}}" class="btn btn-bg index-btn"><i>View</i></a>
